@@ -1,0 +1,41 @@
+{
+  "name": "jktdata-server",
+  "version": "1.0.0",
+  "description": "nodejs server used for project jktdata",
+  "main": "app.js",
+  "scripts": {
+    "build": "concurrently \"rimraf dist \" \"babel src -d dist/src --source-maps\"   \"babel app.js -d dist --source-maps\" \"gulp\"",
+    "serve": "./node_modules/.bin/babel-node app.js --preset es2015, stage-0",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fengqingwu/jktdata.git"
+  },
+  "keywords": [
+    "nodejs",
+    "server"
+  ],
+  "author": "jacktan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fengqingwu/jktdata/issues"
+  },
+  "homepage": "https://github.com/fengqingwu/jktdata#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "gulp": "^3.9.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-uglify": "^3.0.2"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "concurrently": "^5.0.2",
+    "express": "^4.17.1",
+    "rimraf": "^3.0.0"
+  }
+}
