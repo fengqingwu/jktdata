@@ -2,6 +2,8 @@
 import Express from 'express'
 import AppConfig from "./config/index.js";
 import Router from "./router/index.js";
+import path from "path";
+
 
 class jktApp {
     constructor() {
@@ -9,15 +11,21 @@ class jktApp {
     }
     init() {
         this.config = AppConfig;
+        //init express app
         this.Express_ = Express();
+        //init static path
+        this.Express_.use('/static/', Express.static(this.config.staticFolder));
+        //init route
         this.initRoute().then(() => {
             this.run();
+        }).catch(e => {
+            console.log("error", e)
         })
     }
     initRoute() {
         return new Promise((resolve, reject) => {
             try {
-                this.router = new Router(this.Express_);
+                this.router = Router(this.Express_, this.config);
                 if (this.router) {
                     resolve(this.router);
                 } else {
